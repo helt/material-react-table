@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { MaterialReactTable, useMaterialReactTable, type MRT_ColumnDef } from '../../src';
 
 const meta: Meta = {
-  title: 'Fixed Bugs/row dragging on paginated virtual table',
+  title: 'Fixed Bugs/row dragging on virtual rows',
 };
 
 export default meta;
