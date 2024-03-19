@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker';
 import { type Meta } from '@storybook/react';
 import { useState } from 'react';
 import { MaterialReactTable, useMaterialReactTable, type MRT_ColumnDef } from '../../src';
+import { List, ListItem, Typography } from '@mui/material';
 
 const meta: Meta = {
   title: 'Fixed Bugs/row dragging on virtual rows',
@@ -9,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const initData = [...Array(25), ].map(() => ({
+const initData = [...Array(25),].map(() => ({
   age: faker.number.int(20) + 18,
   email: faker.internet.email(),
   firstName: faker.person.firstName(),
@@ -61,17 +62,17 @@ export const RowDraggingEnabled = () => {
   const t = useMaterialReactTable({
     enableRowVirtualization: true,
     enableRowNumbers: true,
-    columns:columns,
-    data:data,
+    columns: columns,
+    data: data,
     enableRowDragging: true,
     initialState: {
       density: 'compact',
-      columnFilters: [{id: "firstName", value: "foo" }],
-      showColumnFilters: true
+      pagination: { pageIndex: 1, pageSize: 10}
     },
   })
-  return (
-    <MaterialReactTable table={t}
-    />
+  return (<>
+    <Typography>Just drag a any row on page 2 (active per default) to trigger the bug</Typography>
+    <MaterialReactTable table={t} />
+  </>
   );
 };
